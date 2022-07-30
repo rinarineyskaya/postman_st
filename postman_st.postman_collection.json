@@ -7,31 +7,37 @@
 	},
 	"item": [
 		{
-			"name": "first",
+			"name": "hw_1_first",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/get_method?name=str&age=int",
-					"protocol": "http",
+					"raw": "{{url}}/get_method?name=Rina&age=21",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
 						"get_method"
 					],
 					"query": [
 						{
 							"key": "name",
-							"value": "str"
+							"value": "Rina"
 						},
 						{
 							"key": "age",
-							"value": "int"
+							"value": "21"
 						}
 					]
 				}
@@ -64,15 +70,10 @@
 					]
 				},
 				"url": {
-					"raw": "http://162.55.220.72:5005/user_info_3?name=Rina&age=21&salary=500",
-					"protocol": "http",
+					"raw": "{{url}}/user_info_3?name=Rina&age=21&salary=500",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
 						"user_info_3"
 					],
@@ -100,15 +101,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_1?name=Rina&age=21&weight=60",
-					"protocol": "http",
+					"raw": "{{url}}/object_info_1?name=Rina&age=21&weight=60",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
 						"object_info_1"
 					],
@@ -136,15 +132,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_2?name=Rina&age=21&salary=500",
-					"protocol": "http",
+					"raw": "{{url}}/object_info_2?name=Rina&age=21&salary=500",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
 						"object_info_2"
 					],
@@ -172,15 +163,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_3?name=Rina&age=21&salary=500",
-					"protocol": "http",
+					"raw": "{{url}}/object_info_3?name=Rina&age=21&salary=500",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
 						"object_info_3"
 					],
@@ -208,16 +194,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_4?name=Rina&age=21&salary=500",
-					"protocol": "http",
+					"raw": "{{url}}/object_info_4?name=Rina&age=21&salary=500",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
+						"",
 						"object_info_4"
 					],
 					"query": [
@@ -264,21 +246,207 @@
 					]
 				},
 				"url": {
-					"raw": "http://162.55.220.72:5005/user_info_2",
-					"protocol": "http",
+					"raw": "{{url}}/user_info_2?name=Rina&age=21&salary=500",
 					"host": [
-						"162",
-						"55",
-						"220",
-						"72"
+						"{{url}}"
 					],
-					"port": "5005",
 					"path": [
 						"user_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Rina"
+						},
+						{
+							"key": "age",
+							"value": "21"
+						},
+						{
+							"key": "salary",
+							"value": "500"
+						}
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "test_r",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/object_info_4?name=eeeee&age=209&salary=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"",
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "eeeee"
+						},
+						{
+							"key": "age",
+							"value": "209"
+						},
+						{
+							"key": "salary",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var resp_token = jsonData.token;\r",
+							"\r",
+							"console.log(\"TOKEN = \" + resp_token);\r",
+							"\r",
+							"pm.environment.set(\"token\", resp_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "rrr",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pots_token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json()\r",
+							"var age = +jsonData.age\r",
+							"var agee = parseInt(jsonData.age)\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"console.log(\"jsonData.age = \" + jsonData.age +' '+ typeof(jsonData.age));\r",
+							"console.log(\"int age \" + age +' '+ typeof(age));\r",
+							"console.log(\"int agee \" + agee +' '+ typeof(agee));\r",
+							"\r",
+							"pm.test(\"Your test age > 18\", function () {\r",
+							"    pm.expect(age).to.be.above(18);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "21",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Rina",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/get_test_user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get_test_user"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", () => {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
 		}
 	]
 }
